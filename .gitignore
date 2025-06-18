@@ -23,6 +23,8 @@ logs/*
 .dev/*
 mlruns/*
 mlartifacts/*
+dags/*
+!dags/**/*.py
 
 ## Python
 venv
