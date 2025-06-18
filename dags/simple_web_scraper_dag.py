@@ -6,7 +6,7 @@ A basic DAG that scrapes and parses data from a website
 from datetime import datetime, timedelta
 from airflow import DAG
 from airflow.operators.python import PythonOperator
-from airflow.operators.dummy import DummyOperator
+from airflow.operators.empty import EmptyOperator
 import requests
 from bs4 import BeautifulSoup
 import pandas as pd
@@ -136,7 +136,10 @@ def generate_report(**context):
         raise
 
 # Define tasks
-start = DummyOperator(task_id='start', dag=dag)
+start = EmptyOperator(
+    task_id='start',
+    dag=dag,
+)
 
 scrape_task = PythonOperator(
     task_id='scrape_quotes',
@@ -156,7 +159,7 @@ report_task = PythonOperator(
     dag=dag,
 )
 
-end = DummyOperator(task_id='end', dag=dag)
+end = EmptyOperator(task_id='end', dag=dag)
 
 # Define dependencies
 start >> scrape_task >> parse_task >> report_task >> end 

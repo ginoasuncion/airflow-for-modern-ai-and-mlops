@@ -7,7 +7,7 @@ from datetime import datetime, timedelta
 from airflow import DAG
 from airflow.operators.python import PythonOperator
 from airflow.operators.bash import BashOperator
-from airflow.operators.dummy import DummyOperator
+from airflow.operators.empty import EmptyOperator
 
 # Default arguments for the DAG
 default_args = {
@@ -31,7 +31,7 @@ dag = DAG(
 )
 
 # Task 1: Start
-start = DummyOperator(
+start = EmptyOperator(
     task_id='start',
     dag=dag,
 )
@@ -117,7 +117,7 @@ get_system_info = BashOperator(
 )
 
 # Task 6: End
-end = DummyOperator(
+end = EmptyOperator(
     task_id='end',
     dag=dag,
 )

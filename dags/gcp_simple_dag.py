@@ -7,7 +7,7 @@ from datetime import datetime, timedelta
 from airflow import DAG
 from airflow.operators.python import PythonOperator
 from airflow.operators.bash import BashOperator
-from airflow.operators.dummy import DummyOperator
+from airflow.operators.empty import EmptyOperator
 from airflow.providers.google.cloud.operators.bigquery import (
     BigQueryCreateEmptyDatasetOperator,
     BigQueryCreateEmptyTableOperator,
@@ -44,7 +44,7 @@ dag = DAG(
 )
 
 # Task 1: Start
-start = DummyOperator(
+start = EmptyOperator(
     task_id='start',
     dag=dag,
 )
@@ -157,7 +157,7 @@ delete_bucket = GCSDeleteBucketOperator(
 )
 
 # Task 10: End
-end = DummyOperator(
+end = EmptyOperator(
     task_id='end',
     dag=dag,
 )

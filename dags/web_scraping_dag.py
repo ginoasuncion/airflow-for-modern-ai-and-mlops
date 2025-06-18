@@ -6,7 +6,7 @@ A DAG that demonstrates web scraping and data parsing with Airflow
 from datetime import datetime, timedelta
 from airflow import DAG
 from airflow.operators.python import PythonOperator
-from airflow.operators.dummy import DummyOperator
+from airflow.operators.empty import EmptyOperator
 import requests
 from bs4 import BeautifulSoup
 import pandas as pd
@@ -289,7 +289,7 @@ def scrape_real_website_data(**context):
         return f"Used mock data due to scraping error. {len(df)} quotes available"
 
 # Define tasks
-start = DummyOperator(task_id='start', dag=dag)
+start = EmptyOperator(task_id='start', dag=dag)
 
 scrape_news = PythonOperator(
     task_id='scrape_news_headlines',
@@ -321,7 +321,7 @@ analyze_data_task = PythonOperator(
     dag=dag,
 )
 
-end = DummyOperator(task_id='end', dag=dag)
+end = EmptyOperator(task_id='end', dag=dag)
 
 # Define task dependencies
 start >> [scrape_news, scrape_weather, scrape_quotes] >> parse_data >> analyze_data_task >> end 
