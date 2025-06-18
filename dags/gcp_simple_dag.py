@@ -152,7 +152,6 @@ list_gcs_objects = GCSListObjectsOperator(
 delete_bucket = GCSDeleteBucketOperator(
     task_id='delete_gcs_bucket',
     bucket_name='airflow-demo-bucket-{{ ds_nodash }}',
-    force_delete=True,
     dag=dag,
 )
 
