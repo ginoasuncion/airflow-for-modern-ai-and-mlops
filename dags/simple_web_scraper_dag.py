@@ -28,7 +28,7 @@ dag = DAG(
     'simple_web_scraper',
     default_args=default_args,
     description='Simple web scraping and parsing DAG',
-    schedule_interval=timedelta(hours=1),
+    schedule=timedelta(hours=1),
     catchup=False,
     tags=['web-scraping', 'simple'],
 )

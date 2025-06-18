@@ -25,7 +25,7 @@ dag = DAG(
     'simple_demo_dag',
     default_args=default_args,
     description='A simple demo DAG for testing Airflow setup',
-    schedule_interval=timedelta(minutes=30),  # Run every 30 minutes for testing
+    schedule=timedelta(minutes=30),  # Run every 30 minutes for testing
     catchup=False,
     tags=['demo', 'testing'],
 )

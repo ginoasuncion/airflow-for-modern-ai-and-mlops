@@ -29,7 +29,7 @@ dag = DAG(
     'web_scraping_dag',
     default_args=default_args,
     description='A DAG that scrapes and parses data from websites',
-    schedule_interval=timedelta(hours=6),  # Run every 6 hours
+    schedule=timedelta(hours=6),  # Run every 6 hours
     catchup=False,
     tags=['web-scraping', 'data-parsing', 'etl'],
 )

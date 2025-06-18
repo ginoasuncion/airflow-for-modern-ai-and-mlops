@@ -38,7 +38,7 @@ dag = DAG(
     'gcp_simple_dag',
     default_args=default_args,
     description='A simple DAG demonstrating GCP operations',
-    schedule_interval=timedelta(days=1),
+    schedule=timedelta(days=1),
     catchup=False,
     tags=['gcp', 'bigquery', 'cloud-storage'],
 )
