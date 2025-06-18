@@ -1,7 +1,6 @@
 ## Airflow
 logs/*
 plugins/*
-dags/*
 
 ## Configs
 .env
@@ -24,6 +23,8 @@ logs/*
 .dev/*
 mlruns/*
 mlartifacts/*
+dags/*
+!dags/**/*.py
 
 ## Python
 venv
